@@ -1,12 +1,12 @@
 import requests
 
+import json
 
-def Login(cedula, password):
-    url = "http://127.0.0.1:8000/login/"
-    payload={}
-    headers = {}
+def Login(cedula):
+    url = "http://127.0.0.1:8000/login/?cedula={}".format(cedula)
 
-    response = requests.request("GET", url, headers=headers, data=payload)
+    response = json.loads(requests.get(url).text)
+    return response
 
 
 """consultas de la Api coffee Manager"""
@@ -47,4 +47,4 @@ def get_sales(gte_weight ="", lte_weight="", gte_overall="", lte_overall=""):
         print ("cedula es ---> {}".format(i["users"]["login"]))
     return response.text
 
-print(get_sales(gte_overall=32))
+print(Login(1)[0]["cedula"])

@@ -21,8 +21,7 @@ class User(models.Model):
         ("2", "Rainforest")
     )
     id = models.AutoField(primary_key = True)
-
-    login = models.OneToOneField(Login, related_name="login", null=True, blank=True, on_delete = models.CASCADE)
+    login = models.OneToOneField(Login, related_name="login", null=False, blank=False, on_delete = models.CASCADE)
 
     name = models.CharField(max_length = 255)
     last_name = models.CharField(max_length = 255)

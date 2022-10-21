@@ -12,7 +12,6 @@ class User_Serializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = "__all__"
-        depth = 1
 
 class Sale_Serializer(serializers.ModelSerializer):
     class Meta:

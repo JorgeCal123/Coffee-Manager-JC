@@ -13,6 +13,9 @@ from django_filters import rest_framework as filters
 class Login_Model_Viewset(ModelViewSet):
     serializer_class = Login_Serializer
     queryset =  Login.objects.all()
+    filter_backends = [DjangoFilterBackend]
+
+    filterset_fields = ["cedula",]
 
 
 class User_Model_Viewset(ModelViewSet):
@@ -33,11 +36,15 @@ class Sale_Model_Viewset(ModelViewSet):
     serializer_class = Sale_Serializer
     queryset =  Sale.objects.all()
     filter_backends = [DjangoFilterBackend]
-    filterset_fields = ["users", "type_cooffee"]
     filterset_fields = {
         "weight_cooffe": ["gte","lte"],
         "overall_value": ["gte","lte"],
     }
+class Sale_user_Model_Viewset(ModelViewSet):
+    serializer_class = Sale_Serializer
+    queryset =  Sale.objects.all()
+    filter_backends = [DjangoFilterBackend]
+    filterset_fields = ["users", "type_cooffee"]
 
 class Sale_Model_Viewset_fecha(ModelViewSet):
     serializer_class = Sale_Serializer
